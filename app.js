@@ -12,4 +12,7 @@ app.set('view engine', 'ejs')
 // Setup Route
 app.use(route)
 
+// Setup helpers
+app.locals.tanggalIndo = require('./util/helpers.js').tanggalIndo;
+
 module.exports = app
