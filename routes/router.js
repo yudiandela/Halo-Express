@@ -1,8 +1,14 @@
+// Import data yang di perlukan
 const { Router } = require('express')
-const HomeController = require('../controllers/HomeController.js')
+const NotesController = require('../controllers/NotesController.js')
 
+// Inisialisasi Router
 const router = new Router()
 
-router.get('/', HomeController.index)
+// CRUD Method 
+router.get('/', NotesController.index)
+router.get('/create', NotesController.create)
+router.post('/store', NotesController.store)
 
+// Export method
 module.exports = router
