@@ -1,0 +1,33 @@
+<h1>Ubah Catatan</h1>
+<div>
+    <a href="/" class="btn btn-primary"><i class="fas fa-list-alt"></i> Semua Catatan</a>
+</div>
+<div class="card my-2">
+    <div class="card-body">
+        <form action="/<%= note.id %>?_method=put" method="POST">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" class="form-control" value="<%= note.title %>">
+                    </div>
+                    <div class="col">
+                        <label for="user">User</label>
+                        <input type="text" name="user" id="user" class="form-control" value="<%= note.user %>">
+                    </div>
+                    <div class="col">
+                        <label for="created_at">Date</label>
+                        <input type="date" name="created_at" id="created_at" class="form-control"
+                            value="<%= note.created_at %>">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="body">Body</label>
+                <textarea name="body" id="body" cols="30" rows="10" class="form-control"><%= note.body %></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Ubah Catatan</button>
+            <button type="reset" class="btn btn-danger">Reset</button>
+        </form>
+    </div>
+</div>
