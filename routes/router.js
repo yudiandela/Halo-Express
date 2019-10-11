@@ -8,7 +8,7 @@ const router = new Router()
 // CRUD Method 
 router.get('/', NotesController.index)
 router.get('/create', NotesController.create)
-router.post('/store', NotesController.store)
+router.post('/', NotesController.store)
 
 // Export method
 module.exports = router

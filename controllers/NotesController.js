@@ -1,5 +1,5 @@
 // Import data yang di perlukan
-const { Note } = require('../models/Note.js')
+const Note = require('../models/Note.js')
 
 /**
  * Menampilkan seluruh catatan di halaman Awal
@@ -8,7 +8,7 @@ const { Note } = require('../models/Note.js')
  * @param {Response} res Response
  */
 const index = (req, res) => {
-    const notes = Note()
+    const notes = Note.getAll()
     res.render('index', { notes: notes })
 }
 
@@ -30,7 +30,7 @@ const create = (req, res) => {
  */
 const store = (req, res) => {
     Note.store(req.body)
-    res.redirected('/')
+    res.redirect('/')
 }
 
 // Export semua method

@@ -15,18 +15,26 @@ const NOTES = [
     }
 ]
 
-const Note = () => NOTES
+/**
+ * Mengambil seluruh catatan
+ */
+const getAll = () => NOTES
 
+/**
+ * Store data ke dalam database
+ * 
+ * @param {string} data data
+ */
 const store = (data) => {
-    // const newData = data
-    // newData['id'] = NOTES.length - 1
-    // NOTES.push(newData)
+    const newData = data
+    newData['id'] = NOTES.length - 1
+    NOTES.push(newData)
 
-    // return NOTES
-    console.log(data)
+    return NOTES
 }
 
+// export module
 module.exports = {
-    Note: Note,
+    getAll: getAll,
     store: store
 }
