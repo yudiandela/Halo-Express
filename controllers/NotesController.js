@@ -33,6 +33,11 @@ const store = (req, res) => {
     res.redirect('/')
 }
 
+const show = (req, res) => {
+    const note = Note.getId(req.params.id)
+    res.render('show', { note: note })
+}
+
 /**
  * Menampilkan form ubah catatan
  * 
@@ -61,6 +66,7 @@ module.exports = {
     index: index,
     create: create,
     store: store,
+    show: show,
     edit: edit,
     update: update
 }
