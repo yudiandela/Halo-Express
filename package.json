@@ -1,0 +1,12 @@
+{
+	"name": "halo-express",
+	"version": "1.0.0",
+	"description": "Belajar membuat aplikasi dengan Node JS dari buku Halo Express - Om Riza Hacktiv8",
+	"main": "index.js",
+	"dependencies": {},
+	"author": {
+		"name": "Yudi Andela",
+		"email": "yudhi.andhela@gmail.com"
+	},
+	"license": "MIT"
+}
