@@ -16,7 +16,11 @@
             <%= note.body %>
         </p>
         <hr />
-        <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+        <a href="/<%= note.id %>/destroy?_method=DELETE" onclick="return confirm('Kamu yakin...??')"
+            class="btn btn-danger">
+            <i class="fas fa-trash-alt"></i>
+            Delete
+        </a>
         <a href="/<%= note.id %>/edit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Edit</a>
     </div>
 </div>

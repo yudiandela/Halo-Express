@@ -61,6 +61,18 @@ const update = (req, res) => {
     res.redirect('/')
 }
 
+/**
+ * Menghapus dengan data specific
+ * 
+ * @param {string} req Request
+ * @param {string} res Response
+ */
+const destroy = (req, res) => {
+    const { id } = req.params
+    Note.destroy(id)
+    res.redirect('/')
+}
+
 // Export semua method
 module.exports = {
     index: index,
@@ -68,5 +80,6 @@ module.exports = {
     store: store,
     show: show,
     edit: edit,
-    update: update
+    update: update,
+    destroy: destroy
 }

@@ -69,10 +69,24 @@ const update = (id, data) => {
     return NOTES[id]
 }
 
+/**
+ * Menghapus data berdasarkan id
+ * 
+ * @param {integer} id 
+ */
+const destroy = (id) => {
+    NOTES = NOTES.filter((note) => {
+        return note.id !== parseInt(id)
+    })
+
+    return NOTES
+}
+
 // export module
 module.exports = {
     getAll: getAll,
     getId: getId,
     store: store,
-    update: update
+    update: update,
+    destroy: destroy
 }
