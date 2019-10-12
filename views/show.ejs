@@ -16,8 +16,7 @@
             <%= note.body %>
         </p>
         <hr />
-        <a href="/<%= note.id %>/destroy?_method=DELETE" onclick="return confirm('Kamu yakin...??')"
-            class="btn btn-danger">
+        <a href="/<%= note.id %>?_method=DELETE" onclick="return confirm('Kamu yakin...??')" class="btn btn-danger">
             <i class="fas fa-trash-alt"></i>
             Delete
         </a>

@@ -11,7 +11,7 @@ router.get('/create', NotesController.create)
 router.post('/', NotesController.store)
 router.get('/:id/edit', NotesController.edit)
 router.put('/:id', NotesController.update)
-router.delete('/:id/destroy', NotesController.destroy)
+router.delete('/:id', NotesController.destroy)
 router.get('/:id', NotesController.show)
 
 // Export method
