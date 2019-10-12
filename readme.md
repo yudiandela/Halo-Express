@@ -48,3 +48,5 @@ npm run dev
 -   [ ejs template ](https://ejs.co)
 -   [ PostgreSQL ](https://www.postgresql.org)
 -   [ Knex.js ](http://knexjs.org)
+-   [ Bootstrap CSS ](https://getbootstrap.com)
+-   [ Cosmo Bootstrap Style ](https://bootswatch.com/cosmo)
