@@ -20,7 +20,14 @@ const getAll = async () => {
  */
 const getId = async (id) => {
     try {
-        return await db(table).where({ id }).first()
+        const note = await db(table).where({ id }).first()
+
+        if (note) {
+            return await db(table).where({ id }).first()
+        }
+
+        return false
+
     } catch (error) {
         console.lg(error.message)
     }
