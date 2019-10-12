@@ -16,10 +16,11 @@
             <%= note.body %>
         </p>
         <hr />
-        <a href="/<%= note.id %>?_method=DELETE" onclick="return confirm('Kamu yakin...??')" class="btn btn-danger">
-            <i class="fas fa-trash-alt"></i>
-            Delete
-        </a>
+        <form class="d-inline" method="POST" action="/<%= note.id %>?_method=DELETE">
+            <button class="btn btn-danger" name="remove" onclick="return confirm('Kamu yakin...??')">
+                <i class="fas fa-trash-alt"></i> Delete
+            </button>
+        </form>
         <a href="/<%= note.id %>/edit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Edit</a>
     </div>
 </div>
