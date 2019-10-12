@@ -5,9 +5,9 @@ const table = 'notes'
 /**
  * Mengambil seluruh catatan
  */
-const getAll = () => {
+const getAll = async () => {
     try {
-        return db.select().from(table)
+        return await db.select().from(table)
     } catch (error) {
         console.log(error.message)
     }
@@ -18,8 +18,12 @@ const getAll = () => {
  * 
  * @param {integer} id
  */
-const getId = (id) => {
-    return db.select().from(table).first()
+const getId = async (id) => {
+    try {
+        return await db(table).where({ id }).first()
+    } catch (error) {
+        console.lg(error.message)
+    }
 }
 
 /**
@@ -27,9 +31,9 @@ const getId = (id) => {
  * 
  * @param {array} data
  */
-const store = (data) => {
+const store = async (data) => {
     try {
-        return db(table).insert(data)
+        return await db(table).insert(data)
     } catch (error) {
         console.lg(error.message)
     }
@@ -41,8 +45,8 @@ const store = (data) => {
  * @param {integer} id 
  * @param {array} data 
  */
-const update = (id, data) => {
-    return db(table).where({ id }).update(data)
+const update = async (id, data) => {
+    return await db(table).where({ id }).update(data)
 }
 
 /**
@@ -50,8 +54,8 @@ const update = (id, data) => {
  * 
  * @param {integer} id 
  */
-const destroy = (id) => {
-    return db(table).where({ id }).del()
+const destroy = async (id) => {
+    return await db(table).where({ id }).del()
 }
 
 // export module

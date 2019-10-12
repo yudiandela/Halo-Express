@@ -35,7 +35,11 @@ const store = async (req, res) => {
 
 const show = async (req, res) => {
     const note = await Note.getId(req.params.id)
-    res.render('notes/show', { note: note })
+    console.log(req.params.id, note.id)
+    if (req.params.id == note.id) {
+        res.render('notes/show', { note: note })
+    }
+    res.render('404')
 }
 
 /**
