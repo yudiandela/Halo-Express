@@ -7,8 +7,8 @@ const Note = require('../models/Note.js')
  * @param {string} req Request
  * @param {string} res Response
  */
-const index = (req, res) => {
-    const notes = Note.getAll()
+const index = async (req, res) => {
+    const notes = await Note.getAll()
     res.render('index', { notes: notes })
 }
 
@@ -28,13 +28,13 @@ const create = (req, res) => {
  * @param {string} req Request
  * @param {string} res Response
  */
-const store = (req, res) => {
-    Note.store(req.body)
+const store = async (req, res) => {
+    await Note.store(req.body)
     res.redirect('/')
 }
 
-const show = (req, res) => {
-    const note = Note.getId(req.params.id)
+const show = async (req, res) => {
+    const note = await Note.getId(req.params.id)
     res.render('notes/show', { note: note })
 }
 
@@ -44,8 +44,8 @@ const show = (req, res) => {
  * @param {string} req Request
  * @param {string} res Response
  */
-const edit = (req, res) => {
-    const note = Note.getId(req.params.id)
+const edit = async (req, res) => {
+    const note = await Note.getId(req.params.id)
     res.render('notes/edit', { note: note })
 }
 
@@ -55,9 +55,9 @@ const edit = (req, res) => {
  * @param {string} req Request
  * @param {string} res Response
  */
-const update = (req, res) => {
+const update = async (req, res) => {
     const { id } = req.params
-    Note.update(id, req.body)
+    await Note.update(id, req.body)
     res.redirect('/')
 }
 
@@ -67,9 +67,9 @@ const update = (req, res) => {
  * @param {string} req Request
  * @param {string} res Response
  */
-const destroy = (req, res) => {
+const destroy = async (req, res) => {
     const { id } = req.params
-    Note.destroy(id)
+    await Note.destroy(id)
     res.redirect('/')
 }
 

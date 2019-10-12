@@ -1,24 +1,17 @@
-let NOTES = [
-    {
-        id: 1,
-        title: 'Belajar Membuat aplikasi Catatan dengan Node JS',
-        body: 'Ini deskripsi dari Belajar Membuat aplikasi Catatan dengan Node JS',
-        user: 'Yudi Andela',
-        created_at: new Date('2019-10-11')
-    },
-    {
-        id: 2,
-        title: 'Belajar Node JS dari Buku Om Riza Hacktiv8',
-        body: 'Ini deskripsi dari Belajar Node JS dari Buku Om Riza Hacktiv8',
-        user: 'Yudi Andela',
-        created_at: new Date('2019-10-11')
-    }
-]
+const config = require('../knexfile.js')[process.env.NODE_ENV || 'development']
+const db = require('knex')(config)
+const table = 'notes'
 
 /**
  * Mengambil seluruh catatan
  */
-const getAll = () => NOTES
+const getAll = () => {
+    try {
+        return db.select().from(table)
+    } catch (error) {
+        console.log(error.message)
+    }
+}
 
 /**
  * Mengambil data id dari url parameter
@@ -26,10 +19,7 @@ const getAll = () => NOTES
  * @param {integer} id
  */
 const getId = (id) => {
-    const notes = NOTES.filter((note) => {
-        return note.id === parseInt(id);
-    });
-    return notes[0];
+    return db.select().from(table).first()
 }
 
 /**
@@ -38,12 +28,11 @@ const getId = (id) => {
  * @param {array} data
  */
 const store = (data) => {
-    const newData = data
-    newData['id'] = NOTES.length + 1
-    newData['created_at'] = new Date()
-    NOTES.push(newData)
-
-    return NOTES
+    try {
+        return db(table).insert(data)
+    } catch (error) {
+        console.lg(error.message)
+    }
 }
 
 /**
@@ -53,20 +42,7 @@ const store = (data) => {
  * @param {array} data 
  */
 const update = (id, data) => {
-    // Hapus catatan sekarang
-    const newNotes = NOTES.filter((note) => {
-        return note.id !== parseInt(id)
-    })
-
-    NOTES = newNotes
-
-    // Tambah catatan baru dengan id sama
-    const newNote = data
-    newNote.id = parseInt(id)
-    newNote.created_at = new Date()
-    NOTES.push(newNote)
-
-    return NOTES[id]
+    return db(table).where({ id }).update(data)
 }
 
 /**
@@ -75,11 +51,7 @@ const update = (id, data) => {
  * @param {integer} id 
  */
 const destroy = (id) => {
-    NOTES = NOTES.filter((note) => {
-        return note.id !== parseInt(id)
-    })
-
-    return NOTES
+    return db(table).where({ id }).del()
 }
 
 // export module
