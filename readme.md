@@ -30,6 +30,8 @@ npm install
 
 Untuk penggunaan di server production, jalankan perintah :
 
+Pastikan database PostgreSQL anda aktif dan lakukan konfigurasi database `knexfile.js`.
+
 ```
 npm start
 ```
@@ -44,3 +46,5 @@ npm run dev
 
 -   [ Express ](https://github.com/expressjs/express)
 -   [ ejs template ](https://ejs.co)
+-   [ PostgreSQL ](https://www.postgresql.org)
+-   [ Knex.js ](http://knexjs.org)
