@@ -39,7 +39,7 @@ const getId = (id) => {
  */
 const store = (data) => {
     const newData = data
-    newData['id'] = NOTES.length - 1
+    newData['id'] = NOTES.length + 1
     newData['created_at'] = new Date()
     NOTES.push(newData)
 
@@ -63,7 +63,7 @@ const update = (id, data) => {
     // Tambah catatan baru dengan id sama
     const newNote = data
     newNote.id = parseInt(id)
-    newNote.created_at = new Date() + 1
+    newNote.created_at = new Date()
     NOTES.push(newNote)
 
     return NOTES[id]

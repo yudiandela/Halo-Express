@@ -19,7 +19,7 @@ const index = (req, res) => {
  * @param {string} res Response
  */
 const create = (req, res) => {
-    res.render('create')
+    res.render('notes/create')
 }
 
 /**
@@ -35,7 +35,7 @@ const store = (req, res) => {
 
 const show = (req, res) => {
     const note = Note.getId(req.params.id)
-    res.render('show', { note: note })
+    res.render('notes/show', { note: note })
 }
 
 /**
@@ -46,7 +46,7 @@ const show = (req, res) => {
  */
 const edit = (req, res) => {
     const note = Note.getId(req.params.id)
-    res.render('edit', { note: note })
+    res.render('notes/edit', { note: note })
 }
 
 /**
