@@ -11,6 +11,9 @@ const errorPage = require('./routes/error.js')
 const COOKIE_SECRET = 'sangat-rahasia' || process.env.COOKIE_SECRET
 const SESSION_SECRET = '54n64t-r4h4514' || process.env.COOKIE_SECRET
 
+const { tanggalIndo } = require('./util/helpers.js')
+const flash = require('./middlewares/Flash.js')
+
 const app = express()
 
 // Form Stuff
@@ -40,12 +43,13 @@ app.use(
         }
     })
 )
+app.use(flash)
 
 // Setup Route
 app.use(route)
 app.use(errorPage)
 
 // Setup helpers
-app.locals.tanggalIndo = require('./util/helpers.js').tanggalIndo;
+app.locals.tanggalIndo = tanggalIndo
 
 module.exports = app

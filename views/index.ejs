@@ -14,6 +14,13 @@
         <% } %>
     </div>
 </div>
+
+<% if ( flash ) { %>
+<div class="alert alert-<%= flash.status %> mt-3">
+    <strong><%= flash.title %>!</strong> <%= flash.text %>
+</div>
+<% } %>
+
 <% if ( notes && notes.length > 0 ) { %>
 <% notes.forEach(function (note) { %>
 <div class="card my-2">
@@ -24,7 +31,9 @@
             </a>
         </h2>
         <p class="text-muted">
+            <% if (tanggalIndo(note.created_at)) { %>
             <i class="fas fa-calendar-alt"></i> Dibuat : <%= tanggalIndo(note.created_at) %>
+            <% } %>
             <i class="ml-3 far fa-user"></i> Oleh : <%= note.user %>
         </p>
         <hr />

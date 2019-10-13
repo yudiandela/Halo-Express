@@ -31,15 +31,24 @@ const create = (req, res) => {
  */
 const store = async (req, res) => {
     await Note.store(req.body)
-    res.redirect('/')
+    req.session.flash = {
+        title: 'Berhasil',
+        text: 'Menambahkan sebuah catatan',
+        status: 'success'
+    }
+    res.redirect('/note')
 }
 
 const show = async (req, res) => {
-    const note = await Note.getId(parseInt(req.params.id))
-    if (req.params.id == note.id) {
-        res.render('notes/show', { note: note })
+    try {
+        const note = await Note.getId(req.params.id)
+        if (req.params.id == note.id) {
+            res.render('notes/show', { note: note })
+        }
+        res.render('404')
+    } catch (error) {
+        console.log(error.message)
     }
-    res.render('404')
 }
 
 /**
@@ -49,7 +58,7 @@ const show = async (req, res) => {
  * @param {string} res Response
  */
 const edit = async (req, res) => {
-    const note = await Note.getId(parseInt(req.params.id))
+    const note = await Note.getId(req.params.id)
     res.render('notes/edit', { note: note })
 }
 
@@ -60,9 +69,14 @@ const edit = async (req, res) => {
  * @param {string} res Response
  */
 const update = async (req, res) => {
-    const { id } = parseInt(req.params)
+    const { id } = req.params
     await Note.update(id, req.body)
-    res.redirect('/')
+    req.session.flash = {
+        title: 'Berhasil',
+        text: 'Mengubah catatan ' + req.body.title,
+        status: 'success'
+    }
+    res.redirect('/note')
 }
 
 /**
@@ -72,9 +86,14 @@ const update = async (req, res) => {
  * @param {string} res Response
  */
 const destroy = async (req, res) => {
-    const { id } = parseInt(req.params)
+    const { id } = req.params
     await Note.destroy(id)
-    res.redirect('/')
+    req.session.flash = {
+        title: 'Berhasil',
+        text: 'Menghapus catatan ' + id,
+        status: 'success'
+    }
+    res.redirect('/note')
 }
 
 // Export semua method
