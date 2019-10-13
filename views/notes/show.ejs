@@ -1,6 +1,6 @@
 <h1>Detail Catatan</h1>
 <div>
-    <a href="/" class="btn btn-primary"><i class="fas fa-list-alt"></i> Semua Catatan</a>
+    <a href="/note" class="btn btn-primary"><i class="fas fa-list-alt"></i> Semua Catatan</a>
 </div>
 <div class="card my-2">
     <div class="card-body">
@@ -16,11 +16,11 @@
             <%= note.body %>
         </p>
         <hr />
-        <form class="d-inline" method="POST" action="/<%= note.id %>?_method=DELETE">
+        <form class="d-inline" method="POST" action="/note/<%= note.id %>?_method=DELETE">
             <button class="btn btn-danger" name="remove" onclick="return confirm('Kamu yakin...??')">
                 <i class="fas fa-trash-alt"></i> Delete
             </button>
         </form>
-        <a href="/<%= note.id %>/edit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Edit</a>
+        <a href="/note/<%= note.id %>/edit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Edit</a>
     </div>
 </div>

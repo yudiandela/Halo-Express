@@ -1,25 +1,29 @@
 // Import data yang di perlukan
 const { Router } = require('express')
-const NotesController = require('../controllers/NotesController.js')
-const UsersController = require('../controllers/UsersController.js')
+const RootController = require('../controllers/RootController.js')
+const NoteController = require('../controllers/NoteController.js')
+const UserController = require('../controllers/UserController.js')
 
 // Inisialisasi Router
 const router = new Router()
 
+// Root Route
+router.get('/', RootController.index)
+
 // CRUD Notes
-router.get('/', NotesController.index)
-router.get('/create', NotesController.create)
-router.post('/', NotesController.store)
-router.get('/:id/edit', NotesController.edit)
-router.put('/:id', NotesController.update)
-router.delete('/:id', NotesController.destroy)
-router.get('/:id', NotesController.show)
+router.get('/note', NoteController.index)
+router.get('/note/create', NoteController.create)
+router.post('/note', NoteController.store)
+router.get('/note/:id/edit', NoteController.edit)
+router.put('/note/:id', NoteController.update)
+router.delete('/note/:id', NoteController.destroy)
+router.get('/note/:id', NoteController.show)
 
 // User Auth
-router.get('/user/register', UsersController.register)
-router.post('/user/register', UsersController.store)
-router.get('/user/login', UsersController.login)
-router.post('/user/login', UsersController.processLogin)
+router.get('/user/register', UserController.register)
+router.post('/user/register', UserController.store)
+router.get('/user/login', UserController.login)
+router.post('/user/login', UserController.processLogin)
 
 // Export method
 module.exports = router

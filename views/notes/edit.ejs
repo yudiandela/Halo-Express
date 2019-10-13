@@ -1,10 +1,10 @@
 <h1>Ubah Catatan</h1>
 <div>
-    <a href="/" class="btn btn-primary"><i class="fas fa-list-alt"></i> Semua Catatan</a>
+    <a href="/note" class="btn btn-primary"><i class="fas fa-list-alt"></i> Semua Catatan</a>
 </div>
 <div class="card my-2">
     <div class="card-body">
-        <form action="/<%= note.id %>?_method=put" method="POST">
+        <form action="/note/<%= note.id %>?_method=put" method="POST">
             <div class="form-group">
                 <div class="row">
                     <div class="col">
