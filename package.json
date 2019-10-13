@@ -1,28 +1,31 @@
 {
-	"name": "halo-express",
-	"version": "1.0.0",
-	"description": "Belajar membuat aplikasi dengan Node JS dari buku Halo Express - Om Riza Hacktiv8",
-	"main": "index.js",
-	"scripts": {
-		"start": "node server.js",
-		"dev": "nodemon server.js"
-	},
-	"dependencies": {
-		"body-parse": "^0.1.0",
-		"ejs": "^2.7.1",
-		"express": "^4.17.1",
-		"express-ejs-layouts": "^2.5.0",
-		"knex": "^0.19.5",
-		"method-override": "^3.0.0",
-		"morgan": "^1.9.1",
-		"pg": "^7.12.1"
-	},
-	"devDependencies": {
-		"nodemon": "^1.19.3"
-	},
-	"author": {
-		"name": "Yudi Andela",
-		"email": "yudhi.andhela@gmail.com"
-	},
-	"license": "MIT"
+    "name": "halo-express",
+    "version": "1.0.0",
+    "description": "Belajar membuat aplikasi dengan Node JS dari buku Halo Express - Om Riza Hacktiv8",
+    "main": "index.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "nodemon server.js",
+        "migrate": "knex migrate:latest",
+        "migrate:rollback": "knex migrate:rollback"
+    },
+    "dependencies": {
+        "bcrypt": "^3.0.6",
+        "body-parse": "^0.1.0",
+        "ejs": "^2.7.1",
+        "express": "^4.17.1",
+        "express-ejs-layouts": "^2.5.0",
+        "knex": "^0.19.5",
+        "method-override": "^3.0.0",
+        "morgan": "^1.9.1",
+        "pg": "^7.12.1"
+    },
+    "devDependencies": {
+        "nodemon": "^1.19.3"
+    },
+    "author": {
+        "name": "Yudi Andela",
+        "email": "yudhi.andhela@gmail.com"
+    },
+    "license": "MIT"
 }

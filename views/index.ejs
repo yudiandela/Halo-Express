@@ -1,6 +1,10 @@
 <h1>Catatan Express</h1>
 <div>
     <a href="/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Catatan</a>
+    <div class="float-right">
+        <a href="/user/login" class="btn btn-success"><i class="fas fa-user"></i> Login Akun</a>
+        <a href="/user/register" class="btn btn-info"><i class="fas fa-user-plus"></i> Tambah Akun</a>
+    </div>
 </div>
 <% if ( notes && notes.length > 0 ) { %>
 <% notes.forEach(function (note) { %>
