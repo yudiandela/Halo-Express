@@ -27,10 +27,10 @@ const store = async (req, res) => {
 
     // Masukkan data kedalam database
     // Melalui file model
-    const User = await User.store(userData)
+    const newUser = await User.store(userData)
 
     // Mengambil data userId dan masukkan ke session
-    req.session.userId = User[0]
+    req.session.userId = newUser[0]
 
     // Redirect Halaman ke Beranda  
     res.redirect('/')
@@ -58,11 +58,9 @@ const processLogin = async (req, res) => {
     const user = await User.login(req.body.email, req.body.password)
 
     if (user) {
-        console.log('Login Berhasil')
         req.session.userId = user.id
         res.redirect('/')
     } else {
-        console.log('Login Gagal')
         res.redirect('/user/login')
     }
 }
