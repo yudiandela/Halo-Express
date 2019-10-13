@@ -20,7 +20,7 @@ const index = async (req, res) => {
  * @param {string} res Response
  */
 const create = (req, res) => {
-    res.render('notes/create')
+    res.render('notes/create', { isLogin: isLogin(req, res) })
 }
 
 /**
@@ -43,7 +43,7 @@ const show = async (req, res) => {
     try {
         const note = await Note.getId(req.params.id)
         if (req.params.id == note.id) {
-            res.render('notes/show', { note: note })
+            res.render('notes/show', { note: note, isLogin: isLogin(req, res) })
         }
         res.render('404')
     } catch (error) {
@@ -59,7 +59,7 @@ const show = async (req, res) => {
  */
 const edit = async (req, res) => {
     const note = await Note.getId(req.params.id)
-    res.render('notes/edit', { note: note })
+    res.render('notes/edit', { note: note, isLogin: isLogin(req, res) })
 }
 
 /**

@@ -1,0 +1,12 @@
+<div class="float-right">
+    <% if(isLogin !== true) { %>
+    <a href="/user/login" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Login Akun</a>
+    <a href="/user/register" class="btn btn-info"><i class="fas fa-user-plus"></i> Tambah Akun</a>
+    <% } else { %>
+    <form action="/user/logout" method="POST">
+        <button type="submit" class="btn btn-danger">
+            <i class="fas fa-sign-out-alt"></i> Keluar
+        </button>
+    </form>
+    <% } %>
+</div>

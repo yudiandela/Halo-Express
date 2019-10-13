@@ -1,4 +1,5 @@
 const User = require('../models/User.js')
+const { isLogin } = require('../middlewares/CheckLogin.js')
 
 /**
  * Menampilkan halaman form Register
@@ -7,7 +8,7 @@ const User = require('../models/User.js')
  * @param {string} res 
  */
 const register = (req, res) => {
-    res.render('user/register')
+    res.render('user/register', { isLogin: isLogin(req, res) })
 }
 
 /**
@@ -43,7 +44,7 @@ const store = async (req, res) => {
  * @param {string} res 
  */
 const login = (req, res) => {
-    res.render('user/login')
+    res.render('user/login', { isLogin: isLogin(req, res) })
 }
 
 /**
