@@ -27,7 +27,10 @@ const store = async (req, res) => {
 
     // Masukkan data kedalam database
     // Melalui file model
-    await User.store(userData)
+    const User = await User.store(userData)
+
+    // Mengambil data userId dan masukkan ke session
+    req.session.userId = User[0]
 
     // Redirect Halaman ke Beranda  
     res.redirect('/')
@@ -52,10 +55,11 @@ const login = (req, res) => {
 const processLogin = async (req, res) => {
     // Ambil data request dari form
     // lalu cek ke dalam database
-    const check = await User.login(req.body.email, req.body.password)
+    const user = await User.login(req.body.email, req.body.password)
 
-    if (check) {
+    if (user) {
         console.log('Login Berhasil')
+        req.session.userId = user.id
         res.redirect('/')
     } else {
         console.log('Login Gagal')
@@ -63,9 +67,26 @@ const processLogin = async (req, res) => {
     }
 }
 
+/**
+ * Melakukan prosess logout
+ * 
+ * @param {string} req 
+ * @param {string} res 
+ */
+const processLogout = async (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            res.redirect('/');
+        }
+        res.clearCookie('sid');
+        res.redirect('/user/login');
+    })
+}
+
 module.exports = {
     register: register,
     store: store,
     login: login,
-    processLogin: processLogin
+    processLogin: processLogin,
+    processLogout: processLogout
 }

@@ -44,7 +44,12 @@ const login = async (email, password) => {
     const user = await get(email)
 
     if (user) {
-        return await bcrypt.compare(password, user.password)
+        const match = await bcrypt.compare(password, user.password)
+        if (match) {
+            return user
+        } else {
+            return false
+        }
     }
 
     return false

@@ -1,5 +1,6 @@
 // Import data yang di perlukan
 const Note = require('../models/Note.js')
+const { isLogin } = require('../middlewares/CheckLogin.js')
 
 /**
  * Menampilkan seluruh catatan di halaman Awal
@@ -9,7 +10,7 @@ const Note = require('../models/Note.js')
  */
 const index = async (req, res) => {
     const notes = await Note.getAll()
-    res.render('index', { notes: notes })
+    res.render('index', { notes: notes, isLogin: isLogin(req, res) })
 }
 
 /**
@@ -34,8 +35,7 @@ const store = async (req, res) => {
 }
 
 const show = async (req, res) => {
-    const note = await Note.getId(req.params.id)
-    console.log(req.params.id, note.id)
+    const note = await Note.getId(parseInt(req.params.id))
     if (req.params.id == note.id) {
         res.render('notes/show', { note: note })
     }
@@ -49,7 +49,7 @@ const show = async (req, res) => {
  * @param {string} res Response
  */
 const edit = async (req, res) => {
-    const note = await Note.getId(req.params.id)
+    const note = await Note.getId(parseInt(req.params.id))
     res.render('notes/edit', { note: note })
 }
 
@@ -60,7 +60,7 @@ const edit = async (req, res) => {
  * @param {string} res Response
  */
 const update = async (req, res) => {
-    const { id } = req.params
+    const { id } = parseInt(req.params)
     await Note.update(id, req.body)
     res.redirect('/')
 }
@@ -72,7 +72,7 @@ const update = async (req, res) => {
  * @param {string} res Response
  */
 const destroy = async (req, res) => {
-    const { id } = req.params
+    const { id } = parseInt(req.params)
     await Note.destroy(id)
     res.redirect('/')
 }

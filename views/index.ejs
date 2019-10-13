@@ -2,8 +2,16 @@
 <div>
     <a href="/note/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Catatan</a>
     <div class="float-right">
-        <a href="/user/login" class="btn btn-success"><i class="fas fa-user"></i> Login Akun</a>
+        <% if(isLogin !== true) { %>
+        <a href="/user/login" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Login Akun</a>
         <a href="/user/register" class="btn btn-info"><i class="fas fa-user-plus"></i> Tambah Akun</a>
+        <% } else { %>
+        <form action="/user/logout" method="POST">
+            <button type="submit" class="btn btn-danger">
+                <i class="fas fa-sign-out-alt"></i> Keluar
+            </button>
+        </form>
+        <% } %>
     </div>
 </div>
 <% if ( notes && notes.length > 0 ) { %>

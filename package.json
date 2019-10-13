@@ -12,9 +12,11 @@
     "dependencies": {
         "bcrypt": "^3.0.6",
         "body-parse": "^0.1.0",
+        "cookie-parser": "^1.4.4",
         "ejs": "^2.7.1",
         "express": "^4.17.1",
         "express-ejs-layouts": "^2.5.0",
+        "express-session": "^1.17.0",
         "knex": "^0.19.5",
         "method-override": "^3.0.0",
         "morgan": "^1.9.1",
