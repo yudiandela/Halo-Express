@@ -20,7 +20,7 @@ router.post('/note', checkLogin, NoteController.store)
 router.get('/note/:id/edit', checkLogin, NoteController.edit)
 router.put('/note/:id', checkLogin, NoteController.update)
 router.delete('/note/:id', checkLogin, NoteController.destroy)
-router.get('/note/:id', checkLogin, NoteController.show)
+router.get('/note/:id', NoteController.show)
 
 // User Auth dengan middleware afterLogin
 router.get('/user/register', afterLogin, UserController.register)
