@@ -4,7 +4,7 @@ Halo Express adalah sebuah aplikasi untuk membuat catatan singkat.
 
 [Lihat Demo](https://catatan-express.herokuapp.com)
 
-![](./index-catatan-express.png)
+![](./index-catatan-express-baru.png)
 
 ## Mulai Gunakan Aplikasi
 
@@ -28,9 +28,15 @@ npm install
 
 ### Jalankan Aplikasi
 
-Untuk penggunaan di server production, jalankan perintah :
+Pastikan database anda aktif dan lakukan konfigurasi database `knexfile.js`.
 
-Pastikan database PostgreSQL anda aktif dan lakukan konfigurasi database `knexfile.js`.
+Import semua tabel yang di perlukan :
+
+```
+npm run migrate
+```
+
+Untuk penggunaan di server production, jalankan perintah :
 
 ```
 npm start
@@ -44,9 +50,25 @@ npm run dev
 
 ## Dependencies
 
+### Library
+
 -   [ Express ](https://github.com/expressjs/express)
 -   [ ejs template ](https://ejs.co)
--   [ PostgreSQL ](https://www.postgresql.org)
+
+### Library Query Builder SQL
+
 -   [ Knex.js ](http://knexjs.org)
--   [ Bootstrap CSS ](https://getbootstrap.com)
+
+### Database Support
+
+-   [ MySQL ](https://www.mysql.com/)
+-   [ PostgreSQL ](https://www.postgresql.org)
+
+### Style CSS
+
+-   [ Animate CSS ](https://daneden.github.io/animate.css/)
 -   [ Cosmo Bootstrap Style ](https://bootswatch.com/cosmo)
+
+### Icon
+
+-   [ Font Awesome ](https://fontawesome.com/)

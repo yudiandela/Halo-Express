@@ -3,12 +3,12 @@
 module.exports = {
 
     development: {
-        client: 'pg',
+        client: 'mysql',
         connection: {
             host: '127.0.0.1',
             database: 'db_catatan_express',
-            user: 'postgres',
-            password: 'postgres'
+            user: 'root',
+            password: ''
         },
         pool: {
             min: 2,
