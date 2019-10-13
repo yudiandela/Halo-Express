@@ -7,7 +7,7 @@ const table = 'notes'
  */
 const getAll = async () => {
     try {
-        return await db.select().from(table)
+        return await db.select().from(table).orderBy('id', 'desc')
     } catch (error) {
         console.log(error.message)
     }

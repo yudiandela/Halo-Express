@@ -10,7 +10,7 @@ const { isLogin } = require('../middlewares/CheckLogin.js')
  */
 const index = async (req, res) => {
     const notes = await Note.getAll()
-    res.render('index', { notes: notes, isLogin: isLogin(req, res) })
+    res.render('notes/index', { notes: notes, isLogin: isLogin(req, res) })
 }
 
 /**
