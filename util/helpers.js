@@ -1,3 +1,8 @@
+/**
+ * Membuat tanggal tampilan indonesia
+ * 
+ * @param {date} date 
+ */
 const tanggalIndo = (date) => {
     date = new Date()
     let getDate = date.getDate()

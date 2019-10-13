@@ -8,7 +8,6 @@
 const flash = (req, res, next) => {
     res.locals.flash = req.session.flash
     delete req.session.flash
-    console.log(res.locals.flash)
     next()
 }
 
