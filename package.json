@@ -11,7 +11,7 @@
         "prestart": "knex migrate:latest"
     },
     "dependencies": {
-        "bcrypt": "^3.0.6",
+        "bcrypt": "^5.0.0",
         "body-parse": "^0.1.0",
         "cookie-parser": "^1.4.4",
         "ejs": "^2.7.1",
